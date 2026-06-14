@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDJ — Madanlal Dharamchand Jain | Premium Global Agri Exporters</title>
+  <meta name="description" content="Established in 1992, MDJ is India's premier B2B export house for premium grains, pulses, spices, and agricultural commodities. Serving global markets with uncompromising quality." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              deep: '#0F5132',
+              fresh: '#2E8B57',
+              mint: '#CFEFD6',
+              offwhite: '#F8FBF8',
+              charcoal: '#1A1A1A'
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FBF8;
+      color: #1A1A1A;
+      overflow-x: hidden;
+    }
+    .glassmism {
+      background: rgba(15, 81, 50, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(207, 239, 214, 0.2);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(15, 81, 50, 0.08);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #FFFFFF 30%, #CFEFD6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-dark {
+      background: linear-gradient(135deg, #0F5132 0%, #2E8B57 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F8FBF8;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #2E8B57;
+      border-radius: 3px;
+    }
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.025;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    .product-active {
+      background-color: #0F5132 !important;
+      color: #FFFFFF !important;
+    }
+  </style>
+</head>
+<body class="custom-scrollbar selection:bg-brand-mint selection:text-brand-deep">
+
+  <div class="grain-overlay z-50 fixed pointer-events-none"></div>
+
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-fresh z-[100] w-0 transition-all duration-75"></div>
+
+  <div id="preloader" class="fixed inset-0 bg-brand-deep z-[9999] flex flex-col justify-center items-center text-white">
+    <div class="overflow-hidden mb-4">
+      <div id="loader-logo" class="font-serif text-3xl tracking-[0.2em] uppercase opacity-0 translate-y-10">MDJ</div>
+    </div>
+    <div class="w-48 h-[1px] bg-white/20 relative overflow-hidden rounded-full">
+      <div id="loader-bar" class="absolute left-0 top-0 h-full w-0 bg-brand-mint"></div>
+    </div>
+    <div id="loader-text" class="text-[10px] tracking-widest uppercase opacity-40 mt-3 font-medium">Sourcing Excellence · 1992</div>
+  </div>
+
+  <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 pt-6 pointer-events-none">
+    <nav class="max-w-7xl mx-auto glassmism rounded-full px-6 py-3 flex justify-between items-center pointer-events-auto shadow-2xl transition-transform duration-500" id="global-nav">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 border border-brand-mint/30 rounded-full flex items-center justify-center bg-white/5 transition-transform group-hover:rotate-12">
+          <span class="font-serif font-bold text-brand-mint text-sm tracking-wider">M</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif font-bold text-white text-base tracking-[0.15em] leading-none uppercase">MDJ</span>
+          <span class="text-[9px] text-brand-mint/60 tracking-wider uppercase font-medium mt-0.5">Madanlal Dharamchand Jain</span>
+        </div>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-mint after:transition-all hover:after:w-full">About</a>
+        <a href="#products" class="text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-mint after:transition-all hover:after:w-full">Products</a>
+        <a href="#logistics" class="text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-mint after:transition-all hover:after:w-full">Global Footprint</a>
+        <a href="#packaging" class="text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-mint after:transition-all hover:after:w-full">Packaging</a>
+        <a href="#certifications" class="text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-mint after:transition-all hover:after:w-full">Certifications</a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#contact" class="bg-brand-mint text-brand-deep font-semibold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-lg hover:bg-white hover:scale-105 transition-all duration-300">
+          Request Quote
+        </a>
+      </div>
+
+      <button class="md:hidden text-white focus:outline-none p-1" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="absolute top-24 left-4 right-4 bg-brand-deep rounded-3xl p-6 shadow-2xl flex flex-col gap-4 opacity-0 scale-95 origin-top pointer-events-none transition-all duration-300 border border-white/10">
+      <a href="#about" class="mobile-link text-white/90 text-lg py-2 border-b border-white/5 font-medium">About Company</a>
+      <a href="#products" class="mobile-link text-white/90 text-lg py-2 border-b border-white/5 font-medium">Product Portfolio</a>
+      <a href="#logistics" class="mobile-link text-white/90 text-lg py-2 border-b border-white/5 font-medium">Global Network</a>
+      <a href="#packaging" class="mobile-link text-white/90 text-lg py-2 border-b border-white/5 font-medium">Custom Packaging</a>
+      <a href="#certifications" class="mobile-link text-white/90 text-lg py-2 border-b border-white/5 font-medium">Compliance</a>
+      <a href="#contact" class="mobile-link bg-brand-mint text-brand-deep text-center font-bold uppercase tracking-wider py-3 rounded-xl mt-2 shadow-lg">Request Custom Quote</a>
+    </div>
+  </header>
+
+  <section class="relative min-h-screen flex items-center justify-center bg-brand-deep text-white pt-24 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/80 to-black/50 z-10"></div>
+      <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-35 scale-105 select-none pointer-events-none">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-agriculture-and-machinery-industrial-combine-harvester-harvesting-wheat-41974-large.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="absolute inset-0 pointer-events-none z-10 overflow-hidden" id="hero-particles"></div>
+
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 w-full py-12 flex flex-col justify-between min-h-[calc(100vh-6rem)]">
+      <div></div>
+      
+      <div class="max-w-4xl mt-8">
+        <div class="inline-flex items-center gap-2 bg-white/10 glassmism px-4 py-1.5 rounded-full border border-white/10 mb-6 opacity-0 translate-y-6 hero-fade">
+          <span class="w-2 h-2 rounded-full bg-brand-mint animate-pulse"></span>
+          <span class="text-xs uppercase font-semibold tracking-widest text-brand-mint">Premium B2B Export House</span>
+        </div>
+        
+        <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-tight leading-[1.08] mb-8 opacity-0 translate-y-6 hero-fade">
+          Exporting India's <br><span class="italic text-gradient font-light">Finest Commodities</span> Worldwide
+        </h1>
+        
+        <p class="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl font-light mb-10 leading-relaxed opacity-0 translate-y-6 hero-fade">
+          From the highly fertile heartlands of Maharashtra, Madanlal Dharamchand Jain provides three decades of structural integrity, premium grading transparency, and custom supply solutions to global food distributors.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 opacity-0 translate-y-6 hero-fade">
+          <a href="#contact" class="group bg-brand-mint text-brand-deep font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-2xl hover:bg-white hover:scale-105 transition-all duration-300 flex items-center gap-3">
+            Initiate Corporate Order
+            <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+          </a>
+          <a href="#products" class="border border-white/30 hover:border-white/80 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm uppercase tracking-wider px-8 py-4 rounded-full transition-all duration-300">
+            Explore Portfolio
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 border-t border-white/10 mt-16 opacity-0 translate-y-6 hero-fade">
+        <div class="flex flex-col">
+          <span class="font-serif text-4xl sm:text-5xl font-bold text-brand-mint" id="counter-years">30+</span>
+          <span class="text-[11px] text-white/50 uppercase tracking-widest mt-1 font-medium">Years Heritage</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-4xl sm:text-5xl font-bold text-brand-mint" id="counter-countries">14+</span>
+          <span class="text-[11px] text-white/50 uppercase tracking-widest mt-1 font-medium">Product Lines</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-4xl sm:text-5xl font-bold text-brand-mint">100%</span>
+          <span class="text-[11px] text-white/50 uppercase tracking-widest mt-1 font-medium">Traceable Supply</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-4xl sm:text-5xl font-bold text-brand-mint">FOB/CIF</span>
+          <span class="text-[11px] text-white/50 uppercase tracking-widest mt-1 font-medium">Global Contracts</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white border-y border-brand-deep/5 py-10 overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-4 text-center mb-6">
+      <span class="text-[10px] tracking-[0.25em] font-bold text-brand-deep/40 uppercase">Accredited Sovereign Clearances</span>
+    </div>
+    <div class="flex gap-12 items-center justify-around max-w-6xl mx-auto opacity-70 px-6 flex-wrap md:flex-nowrap">
+      <div class="flex items-center gap-3 font-serif text-lg font-bold text-brand-deep tracking-wider"><i data-lucide="shield-check" class="text-brand-fresh w-5 h-5"></i> IEC GOVERNMENT CERTIFIED</div>
+      <div class="flex items-center gap-3 font-serif text-lg font-bold text-brand-deep tracking-wider"><i data-lucide="file-check" class="text-brand-fresh w-5 h-5"></i> APEDA REGISTRATION</div>
+      <div class="flex items-center gap-3 font-serif text-lg font-bold text-brand-deep tracking-wider"><i data-lucide="activity" class="text-brand-fresh w-5 h-5"></i> FSSAI QUALITY LICENSED</div>
+      <div class="flex items-center gap-3 font-serif text-lg font-bold text-brand-deep tracking-wider"><i data-lucide="globe" class="text-brand-fresh w-5 h-5"></i> ISO 9001 COMPLIANT</div>
+    </div>
+  </section>
+
+  <section id="about" class="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-8 relative scroll-mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      
+      <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-6 structure-anim">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-[1px] bg-brand-fresh"></span>
+          <span class="text-xs uppercase font-bold tracking-widest text-brand-fresh">Our Legacy Blueprint</span>
+        </div>
+        <h2 class="font-serif text-4xl sm:text-5xl text-brand-deep leading-tight">
+          Three Decades of <br><span class="italic font-light text-gradient-dark">Agricultural Dominance</span>
+        </h2>
+        <p class="text-brand-charcoal/70 text-base leading-relaxed font-light">
+          Founded in 1992 in Jalgaon, Maharashtra—the focal core of India's golden agrarian belt—MDJ has systematically operated as an industrial anchor for major domestic processors. We bridge regional farmers directly to demanding global end-markets.
+        </p>
+        <div class="pt-4">
+          <div class="p-6 bg-brand-deep rounded-2xl text-white flex gap-6 items-center shadow-xl">
+            <div class="font-serif text-5xl text-brand-mint font-bold">1992</div>
+            <div class="text-xs uppercase tracking-widest text-white/75 font-semibold leading-relaxed">Solid industrial operational footing since over 34 years.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-12 structure-anim">
+        <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-brand-deep/5 space-y-6 relative group hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-brand-mint/40 flex items-center justify-center text-brand-deep font-bold text-lg">01</div>
+          <h3 class="font-serif text-2xl font-bold text-brand-deep">Direct Origination Matrix</h3>
+          <p class="text-brand-charcoal/70 text-sm leading-relaxed font-light">
+            We operate collection nodes directly across extensive localized farmlands and state APMC markets. By dismantling middle-tier distribution architecture, we preserve absolute structural batch traceability and defend competitive raw cost advantages.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-brand-deep/5 space-y-6 relative group hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-brand-mint/40 flex items-center justify-center text-brand-deep font-bold text-lg">02</div>
+          <h3 class="font-serif text-2xl font-bold text-brand-deep">Meticulous Clean-Grading Infrastructure</h3>
+          <p class="text-brand-charcoal/70 text-sm leading-relaxed font-light">
+            Every shipment batch undergoes comprehensive screening protocols. Our sorting operations precisely filter parameters across dynamic moisture indexes, customized purity criteria, and exact grain size dimensions to match global statutory regulations.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-brand-deep/5 space-y-6 relative group hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-brand-mint/40 flex items-center justify-center text-brand-deep font-bold text-lg">03</div>
+          <h3 class="font-serif text-2xl font-bold text-brand-deep">Sovereign Regulatory Alignment</h3>
+          <p class="text-brand-charcoal/70 text-sm leading-relaxed font-light">
+            We manage modern logistical pipelines out of primary oceanic ports. Our compliance department ensures execution on export clearances, phytosanitary treatment declarations, standardized vacuum fumigation protocols, and complete customs manifest accuracy.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="products" class="py-24 sm:py-32 bg-brand-deep text-white relative overflow-hidden scroll-mt-20">
+    <div class="absolute right-0 bottom-0 w-96 h-96 bg-brand-fresh/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute left-0 top-1/4 w-96 h-96 bg-brand-mint/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 structure-anim">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-[1px] bg-brand-mint"></span>
+            <span class="text-xs uppercase font-bold tracking-widest text-brand-mint">Export Portfolio Grid</span>
+          </div>
+          <h2 class="font-serif text-4xl sm:text-5xl text-white">
+            Monitored Global <br><span class="italic font-light text-gradient">Product Verticals</span>
+          </h2>
+        </div>
+        
+        <div class="flex flex-wrap gap-2 max-w-2xl bg-white/5 p-2 rounded-2xl border border-white/10 glassmism">
+          <button class="px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold transition-all duration-300 product-active" onclick="filterProducts('all', this)">View All</button>
+          <button class="px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold text-white/60 hover:text-white transition-all duration-300" onclick="filterProducts('cereals', this)">Cereals</button>
+          <button class="px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold text-white/60 hover:text-white transition-all duration-300" onclick="filterProducts('pulses', this)">Pulses & Dal</button>
+          <button class="px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold text-white/60 hover:text-white transition-all duration-300" onclick="filterProducts('spices', this)">Spices</button>
+          <button class="px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest font-semibold text-white/60 hover:text-white transition-all duration-300" onclick="filterProducts('oilseeds', this)">Oilseeds</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+        
+        <div class="product-card bg-white/5 rounded-3xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 group flex flex-col justify-between" data-category="cereals">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-brand-mint/10 flex items-center justify-center font-serif text-2xl text-brand-mint group-hover:scale-110 transition-transform">🌾</div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full text-brand-mint border border-white/5">Premium Grains</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold mb-4 text-white">Cereals & High-End Grains</h3>
+            <p class="text-white/60 text-xs font-light leading-relaxed mb-6">Optimized bulk provisioning pipelines for human consumption and industrial processing grades.</p>
+            <ul class="space-y-3 text-sm text-white/80 mb-8 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Wheat (Lokwan, Sharbati, Premium)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Yellow Maize / Grain Corn</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Sorghum (Premium White Jowar)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Pearl Millet (High-Fiber Bajra)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Long-Grain & Broken Rice</li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full text-center py-3 bg-white/5 hover:bg-brand-mint hover:text-brand-deep text-xs font-bold uppercase tracking-wider rounded-xl border border-white/10 transition-all duration-300">Inquire Specifications</a>
+        </div>
+
+        <div class="product-card bg-white/5 rounded-3xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 group flex flex-col justify-between" data-category="pulses">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-brand-mint/10 flex items-center justify-center font-serif text-2xl text-brand-mint group-hover:scale-110 transition-transform">🫘</div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full text-brand-mint border border-white/5">Protein Crops</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold mb-4 text-white">Pulses & Split Lentils</h3>
+            <p class="text-white/60 text-xs font-light leading-relaxed mb-6">Machine-cleaned, sortex-graded pulses sourced across strategic micro-mandi networks.</p>
+            <ul class="space-y-3 text-sm text-white/80 mb-8 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Chana (Desi & Kabuli Chickpeas)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Toor Dal (Pigeon Pea Splits)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Moong (Whole & Polished Gram)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Urad Dal (Black Gram Splits)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Masoor Dal (Red Lentil Varieties)</li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full text-center py-3 bg-white/5 hover:bg-brand-mint hover:text-brand-deep text-xs font-bold uppercase tracking-wider rounded-xl border border-white/10 transition-all duration-300">Inquire Specifications</a>
+        </div>
+
+        <div class="product-card bg-white/5 rounded-3xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 group flex flex-col justify-between" data-category="spices">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-brand-mint/10 flex items-center justify-center font-serif text-2xl text-brand-mint group-hover:scale-110 transition-transform">🌶️</div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full text-brand-mint border border-white/5">Aromatic Lots</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold mb-4 text-white">Indian Spices & Blends</h3>
+            <p class="text-white/60 text-xs font-light leading-relaxed mb-6">High-essential-oil content whole and processed spices preserving pungent integrity.</p>
+            <ul class="space-y-3 text-sm text-white/80 mb-8 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Whole Dried Red Chillies & Powder</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> High-Curcumin Turmeric Fingers</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Coriander, Cumin & Fennel Seeds</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Premium Ground Core Garam Masala</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Custom Commercial Foodservice Blends</li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full text-center py-3 bg-white/5 hover:bg-brand-mint hover:text-brand-deep text-xs font-bold uppercase tracking-wider rounded-xl border border-white/10 transition-all duration-300">Inquire Specifications</a>
+        </div>
+
+        <div class="product-card bg-white/5 rounded-3xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 group flex flex-col justify-between" data-category="oilseeds">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-brand-mint/10 flex items-center justify-center font-serif text-2xl text-brand-mint group-hover:scale-110 transition-transform">🌻</div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full text-brand-mint border border-white/5">Oil Extractions</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold mb-4 text-white">Industrial Oilseeds</h3>
+            <p class="text-white/60 text-xs font-light leading-relaxed mb-6">Strictly regulated oilseed selections prioritizing vital kernel moisture properties.</p>
+            <ul class="space-y-3 text-sm text-white/80 mb-8 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Natural & Hulled Sesame Seeds</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Groundnut Kernels (Bold & Java)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> High-Protein Soybeans</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Sunflower Whole Seed Crops</li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full text-center py-3 bg-white/5 hover:bg-brand-mint hover:text-brand-deep text-xs font-bold uppercase tracking-wider rounded-xl border border-white/10 transition-all duration-300">Inquire Specifications</a>
+        </div>
+
+        <div class="product-card bg-white/5 rounded-3xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 group flex flex-col justify-between" data-category="cereals">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-brand-mint/10 flex items-center justify-center font-serif text-2xl text-brand-mint group-hover:scale-110 transition-transform">🌾</div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full text-brand-mint border border-white/5">Processed Flour</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold mb-4 text-white">Flour & Milled Milling Goods</h3>
+            <p class="text-white/60 text-xs font-light leading-relaxed mb-6">Consistently granulated flours perfect for industrial baking applications.</p>
+            <ul class="space-y-3 text-sm text-white/80 mb-8 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Chakki Fresh Atta (Whole Wheat Flour)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Pure Fine Gram Flour (Besan)</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Maize & Rice Structural Flours</li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full text-center py-3 bg-white/5 hover:bg-brand-mint hover:text-brand-deep text-xs font-bold uppercase tracking-wider rounded-xl border border-white/10 transition-all duration-300">Inquire Specifications</a>
+        </div>
+
+        <div class="product-card bg-white/5 rounded-3xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 group flex flex-col justify-between" data-category="cereals">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-brand-mint/10 flex items-center justify-center font-serif text-2xl text-brand-mint group-hover:scale-110 transition-transform">🐄</div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-white/10 px-3 py-1 rounded-full text-brand-mint border border-white/5">Livestock Feed</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold mb-4 text-white">Animal Feed Elements</h3>
+            <p class="text-white/60 text-xs font-light leading-relaxed mb-6">Raw components engineered specifically to optimize baseline nutrient requirements.</p>
+            <ul class="space-y-3 text-sm text-white/80 mb-8 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> De-oiled Cakes & Meals</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Feed-Grade Sorghum & Coarse Corn</li>
+              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-mint"></i> Stabilized Wheat Bran Fractions</li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full text-center py-3 bg-white/5 hover:bg-brand-mint hover:text-brand-deep text-xs font-bold uppercase tracking-wider rounded-xl border border-white/10 transition-all duration-300">Inquire Specifications</a>
+        </div>
+
+      </div>
+
+      <div class="mt-16 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center gap-6 glassmism structure-anim">
+        <div class="flex items-center gap-4 text-center sm:text-left">
+          <div class="w-12 h-12 bg-brand-mint/20 rounded-xl flex items-center justify-center text-brand-mint">
+            <i data-lucide="book-open" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-serif text-lg font-bold">Comprehensive Export Catalog</h4>
+            <p class="text-white/60 text-xs font-light mt-0.5">Complete chemical profiles, moisture ceilings, and FCL storage matrices.</p>
+          </div>
+        </div>
+        <button class="w-full sm:w-auto bg-white text-brand-deep hover:bg-brand-mint hover:scale-105 font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i> Download Full Manual
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-8 scroll-mt-20">
+    <div class="text-center max-w-3xl mx-auto mb-20 space-y-4 structure-anim">
+      <div class="flex items-center justify-center gap-2">
+        <span class="w-8 h-[1px] bg-brand-fresh"></span>
+        <span class="text-xs uppercase font-bold tracking-widest text-brand-fresh">Strategic Quality Pillars</span>
+        <span class="w-8 h-[1px] bg-brand-fresh"></span>
+      </div>
+      <h2 class="font-serif text-4xl sm:text-5xl text-brand-deep">
+        Architected for Absolute <span class="italic font-light text-gradient-dark">Supply Assurance</span>
+      </h2>
+      <p class="text-brand-charcoal/60 text-sm font-light leading-relaxed">
+        We recognize the critical operational risks of international agri-purchasing—from volumetric inconsistency to regulatory failures. Here is how our operational baseline manages those liabilities.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 structure-anim">
+      
+      <div class="bg-white border border-brand-deep/5 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-12 h-12 bg-brand-mint/30 rounded-xl flex items-center justify-center text-brand-deep mb-6 group-hover:bg-brand-deep group-hover:text-white transition-colors">
+          <i data-lucide="git-fork" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold text-brand-deep mb-3">Farm-to-Ship Quality Supervision</h3>
+        <p class="text-brand-charcoal/70 text-xs font-light leading-relaxed">
+          From field collection testing right up to localized maritime container locking, our internal parameters verify purity guarantees, eliminating late-stage load degradation.
+        </p>
+      </div>
+
+      <div class="bg-white border border-brand-deep/5 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-12 h-12 bg-brand-mint/30 rounded-xl flex items-center justify-center text-brand-deep mb-6 group-hover:bg-brand-deep group-hover:text-white transition-colors">
+          <i data-lucide="scale" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold text-brand-deep mb-3">Highly Competitive FOB Costings</h3>
+        <p class="text-brand-charcoal/70 text-xs font-light leading-relaxed">
+          Operating massive proprietary scale out of the primary Jalgaon hub allows us to secure optimal commercial crop pricing with local mandis, directly transferring savings to our global partners.
+        </p>
+      </div>
+
+      <div class="bg-white border border-brand-deep/5 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-12 h-12 bg-brand-mint/30 rounded-xl flex items-center justify-center text-brand-deep mb-6 group-hover:bg-brand-deep group-hover:text-white transition-colors">
+          <i data-lucide="coins" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold text-brand-deep mb-3">Flexible Financial Contractings</h3>
+        <p class="text-brand-charcoal/70 text-xs font-light leading-relaxed">
+          We interface cleanly with modern standard banking trade mechanisms, utilizing fully verified Letters of Credit (L/C) and Documents Against Payment (D/P) arrangements.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="logistics" class="py-24 bg-brand-charcoal text-white relative overflow-hidden scroll-mt-20">
+    <div class="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        <div class="lg:col-span-5 space-y-6 structure-anim">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-[1px] bg-brand-mint"></span>
+            <span class="text-xs uppercase font-bold tracking-widest text-brand-mint">Logistical Supply Power</span>
+          </div>
+          <h2 class="font-serif text-4xl sm:text-5xl text-white">
+            Global Port <br><span class="italic font-light text-gradient">Interconnectivity</span>
+          </h2>
+          <p class="text-white/60 text-sm font-light leading-relaxed">
+            Operating secure freight routing directly out of India's Western maritime gateway centers (including JNPT / Nhava Sheva, Mumbai ports), we reliably service continuous supply lines across major trade hubs.
+          </p>
+          
+          <div class="space-y-4 pt-4">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-brand-fresh/20 flex items-center justify-center text-brand-mint mt-1"><i data-lucide="anchor" class="w-4 h-4"></i></div>
+              <div>
+                <h4 class="font-serif text-lg font-medium text-white">Nhava Sheva (JNPT) Extraction Point</h4>
+                <p class="text-white/40 text-xs font-light">Rapid multimodal rail links from our primary regional warehousing units.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-brand-fresh/20 flex items-center justify-center text-brand-mint mt-1"><i data-lucide="navigation" class="w-4 h-4"></i></div>
+              <div>
+                <h4 class="font-serif text-lg font-medium text-white">Full Freight Visibility Compliance</h4>
+                <p class="text-white/40 text-xs font-light">Seamless interface handling for Bill of Lading documentation and customs data tracking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-12 glassmism text-center relative structure-anim">
+          <div class="absolute top-4 left-4 text-[9px] tracking-widest text-white/30 uppercase font-mono">Port Freight Routing System Matrix v4.1</div>
+          
+          <div class="flex justify-between items-center max-w-md mx-auto my-8 relative">
+            <div class="w-16 h-16 rounded-full bg-brand-mint text-brand-deep flex flex-col items-center justify-center shadow-lg z-10">
+              <i data-lucide="warehouse" class="w-5 h-5"></i>
+              <span class="text-[8px] font-bold uppercase tracking-tighter mt-0.5">Hub</span>
+            </div>
+            <div class="flex-1 h-[2px] bg-gradient-to-r from-brand-mint to-brand-fresh relative overflow-hidden mx-2">
+              <div class="absolute inset-0 w-1/3 h-full bg-white animate-infinite-slide"></div>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 text-brand-mint flex flex-col items-center justify-center shadow-lg z-10">
+              <i data-lucide="ship" class="w-5 h-5"></i>
+              <span class="text-[8px] font-bold uppercase tracking-tighter mt-0.5">JNPT</span>
+            </div>
+            <div class="flex-1 h-[2px] bg-gradient-to-r from-brand-fresh to-transparent relative overflow-hidden mx-2">
+              <div class="absolute inset-0 w-1/3 h-full bg-brand-mint animate-infinite-slide-delayed"></div>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-white/5 border border-white/10 text-white/40 flex flex-col items-center justify-center z-10">
+              <i data-lucide="globe" class="w-5 h-5"></i>
+              <span class="text-[8px] font-bold uppercase tracking-tighter mt-0.5">Global</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-left">
+            <div>
+              <div class="text-[10px] uppercase text-white/40 tracking-wider">LCL/FCL Storage</div>
+              <div class="font-serif text-lg text-white font-medium mt-1">Custom Loading</div>
+            </div>
+            <div>
+              <div class="text-[10px] uppercase text-white/40 tracking-wider">Average Port Lead</div>
+              <div class="font-serif text-lg text-white font-medium mt-1">7–10 Business Days</div>
+            </div>
+            <div>
+              <div class="text-[10px] uppercase text-white/40 tracking-wider">Transit Protocols</div>
+              <div class="font-serif text-lg text-white font-medium mt-1">Fumigated Holds</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="packaging" class="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-8 scroll-mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      
+      <div class="lg:col-span-6 bg-gradient-to-br from-brand-mint/40 via-brand-offwhite to-white rounded-3xl p-8 sm:p-12 border border-brand-deep/5 flex flex-col justify-between min-h-[420px] relative overflow-hidden shadow-inner order-2 lg:order-1 structure-anim">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-fresh/5 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div>
+          <span class="text-[9px] tracking-widest font-bold text-brand-fresh uppercase border border-brand-fresh/20 px-3 py-1 rounded-full bg-white">Flexible Dimensional Specifications</span>
+          <h3 class="font-serif text-3xl text-brand-deep mt-6">Any Commercial Volumetric Capacity. Fully Standardized.</h3>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 my-8">
+          <div class="bg-white p-4 rounded-2xl border border-brand-deep/5 text-center shadow-sm">
+            <span class="block font-serif text-xl font-bold text-brand-deep">500g</span>
+            <span class="text-[10px] text-brand-charcoal/50 uppercase mt-1 block">Retail Packs</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brand-deep/5 text-center shadow-sm">
+            <span class="block font-serif text-xl font-bold text-brand-deep">1–5 kg</span>
+            <span class="text-[10px] text-brand-charcoal/50 uppercase mt-1 block">Consumer Packs</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brand-deep/5 text-center shadow-sm">
+            <span class="block font-serif text-xl font-bold text-brand-deep">25 kg</span>
+            <span class="text-[10px] text-brand-charcoal/50 uppercase mt-1 block">HoReCa Standard</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brand-deep/5 text-center shadow-sm">
+            <span class="block font-serif text-xl font-bold text-brand-deep">50 kg</span>
+            <span class="text-[10px] text-brand-charcoal/50 uppercase mt-1 block">Heavy Bulk Bags</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brand-deep/5 text-center shadow-sm">
+            <span class="block font-serif text-xl font-bold text-brand-deep">Jute</span>
+            <span class="text-[10px] text-brand-charcoal/50 uppercase mt-1 block">Breathable Sacks</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-brand-deep/5 text-center shadow-sm">
+            <span class="block font-serif text-xl font-bold text-brand-deep">PP/HDPE</span>
+            <span class="text-[10px] text-brand-charcoal/50 uppercase mt-1 block">Woven Protection</span>
+          </div>
+        </div>
+
+        <p class="text-brand-charcoal/40 text-[11px] tracking-wide italic"><i data-lucide="languages" class="inline w-3.5 h-3.5 mr-1 align-middle"></i> Multilingual label typography support integrated across worldwide compliance criteria.</p>
+      </div>
+
+      <div class="lg:col-span-6 space-y-6 order-1 lg:order-2 structure-anim">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-[1px] bg-brand-fresh"></span>
+          <span class="text-xs uppercase font-bold tracking-widest text-brand-fresh">Tailored Delivery Enclosures</span>
+        </div>
+        <h2 class="font-serif text-4xl sm:text-5xl text-brand-deep leading-tight">
+          Private Label Customization & <span class="italic font-light text-gradient-dark">Protective Formats</span>
+        </h2>
+        <p class="text-brand-charcoal/70 text-base font-light leading-relaxed">
+          We understand that your internal retail presentation or commercial processing equipment demands exact physical dimensioning. We support complete private-brand configuration processing, aligning perfectly with your distribution criteria.
+        </p>
+
+        <div class="space-y-4 pt-4">
+          <div class="flex items-center gap-4 border-b border-brand-deep/5 pb-3">
+            <div class="w-5 h-5 rounded-full bg-brand-mint flex items-center justify-center text-brand-deep"><i data-lucide="check" class="w-3 h-3"></i></div>
+            <span class="text-sm font-medium text-brand-charcoal/90">Vacuum-Sealed Storage Elements for Spices</span>
+          </div>
+          <div class="flex items-center gap-4 border-b border-brand-deep/5 pb-3">
+            <div class="w-5 h-5 rounded-full bg-brand-mint flex items-center justify-center text-brand-deep"><i data-lucide="check" class="w-3 h-3"></i></div>
+            <span class="text-sm font-medium text-brand-charcoal/90">Robust UV-Protected Grade Outer Poly Sacks</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-5 rounded-full bg-brand-mint flex items-center justify-center text-brand-deep"><i data-lucide="check" class="w-3 h-3"></i></div>
+            <span class="text-sm font-medium text-brand-charcoal/90">Precise Tare-Weight Shipping Adjustments</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="certifications" class="py-24 bg-[#11251A] text-white scroll-mt-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4 structure-anim">
+        <span class="text-xs uppercase font-bold tracking-widest text-brand-mint block">Rigorous Global Compliance Verification</span>
+        <h2 class="font-serif text-3xl sm:text-4xl">Fully Accredited Cross-Border Operations</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 structure-anim">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+          <div class="text-brand-mint font-serif text-2xl font-bold mb-2">IEC CODE</div>
+          <div class="text-xs uppercase tracking-wider text-white/50 mb-4">Govt. of India License</div>
+          <p class="text-white/70 text-xs font-light leading-relaxed">Authorized core import-export baseline documentation required for legitimate maritime cross-border customs dispatch operations.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+          <div class="text-brand-mint font-serif text-2xl font-bold mb-2">APEDA</div>
+          <div class="text-xs uppercase tracking-wider text-white/50 mb-4">Export Authority Reg</div>
+          <p class="text-white/70 text-xs font-light leading-relaxed">Active validation from the Agricultural & Processed Food Products Export Development Authority, establishing verified compliance processing parameters.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+          <div class="text-brand-mint font-serif text-2xl font-bold mb-2">FSSAI</div>
+          <div class="text-xs uppercase tracking-wider text-white/50 mb-4">Food Safety Enforcement</div>
+          <p class="text-white/70 text-xs font-light leading-relaxed">Stringent regulatory operational clearance guaranteeing adherence to standard public health food processing procedures inside Indian distribution warehouses.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+          <div class="text-brand-mint font-serif text-2xl font-bold mb-2">ISO 9001</div>
+          <div class="text-xs uppercase tracking-wider text-white/50 mb-4">International Standards</div>
+          <p class="text-white/70 text-xs font-light leading-relaxed">Globally acknowledged quality management operational baseline verification, confirming absolute institutional continuity of organizational business controls.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-8 scroll-mt-20">
+    <div class="bg-brand-deep rounded-[2.5rem] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl structure-anim">
+      <div class="absolute -right-24 -top-24 w-96 h-96 bg-brand-fresh/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+        
+        <div class="lg:col-span-5 space-y-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <span class="text-xs uppercase font-bold tracking-widest text-brand-mint block">Global Purchase Office Interface</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-white leading-tight">Request Commercial <br><span class="italic font-light text-gradient">FOB / CIF Quotations</span></h2>
+            <p class="text-white/70 text-xs font-light leading-relaxed max-w-sm">
+              Our trade desk responds directly within 12 business hours with verified volumetric availability matrices, localized crop report evaluations, and specific cargo port pricing options.
+            </p>
+          </div>
+
+          <div class="space-y-6 border-t border-white/10 pt-8">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-brand-mint"><i data-lucide="map-pin" class="w-4 h-4"></i></div>
+              <div class="text-xs">
+                <span class="block text-white/40 uppercase tracking-wider">Trading Facility Address</span>
+                <span class="font-medium text-white/90 mt-0.5 block">Shop No. 41/B, Market Yard, Jalgaon, Maharashtra, India</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-brand-mint"><i data-lucide="phone-call" class="w-4 h-4"></i></div>
+              <div class="text-xs">
+                <span class="block text-white/40 uppercase tracking-wider">Corporate Encrypted Line / WhatsApp</span>
+                <span class="font-medium text-brand-mint text-base mt-0.5 block font-mono">+91 94044 91708</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-brand-mint"><i data-lucide="user" class="w-4 h-4"></i></div>
+              <div class="text-xs">
+                <span class="block text-white/40 uppercase tracking-wider">Principal Proprietor Oversight</span>
+                <span class="font-medium text-white/90 mt-0.5 block">Madanlal Dharamchand Jain</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 text-brand-charcoal shadow-2xl">
+          <form class="space-y-6" onsubmit="event.preventDefault(); alert('Corporate procurement transmission successful. Our trade desk is compiling your automated specification metrics.');">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider font-bold text-brand-deep/60 mb-2">Buyer Name</label>
+                <input type="text" required class="w-full bg-brand-offwhite border border-brand-deep/5 focus:border-brand-fresh rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors" placeholder="e.g. Alexander Vance" />
+              </div>
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider font-bold text-brand-deep/60 mb-2">Corporate Email Address</label>
+                <input type="email" required class="w-full bg-brand-offwhite border border-brand-deep/5 focus:border-brand-fresh rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors" placeholder="vance@globalfoods.com" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider font-bold text-brand-deep/60 mb-2">Target Grain Category</label>
+                <select class="w-full bg-brand-offwhite border border-brand-deep/5 focus:border-brand-fresh rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors text-brand-charcoal/80">
+                  <option>Cereals & Grain Cargo</option>
+                  <option>Pulses & Split Lentils</option>
+                  <option>Indian Aromatic Spices</option>
+                  <option>Industrial Oilseeds</option>
+                  <option>Other / Custom Blends</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider font-bold text-brand-deep/60 mb-2">Est. Volumetric Mass (Metric Tons)</label>
+                <input type="text" class="w-full bg-brand-offwhite border border-brand-deep/5 focus:border-brand-fresh rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors" placeholder="e.g. 50 MT Minimum" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider font-bold text-brand-deep/60 mb-2">Destination Port Designation (Incoterms 2020)</label>
+              <input type="text" class="w-full bg-brand-offwhite border border-brand-deep/5 focus:border-brand-fresh rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors" placeholder="e.g. CIF Port of Rotterdam, Netherlands" />
+            </div>
+
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider font-bold text-brand-deep/60 mb-2">Granular Quality Criteria & Packaging Directives</label>
+              <textarea rows="4" class="w-full bg-brand-offwhite border border-brand-deep/5 focus:border-brand-fresh rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors" placeholder="Outline mandatory moisture ceilings, grain length minimums, private labelling graphics parameters, etc..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-deep hover:bg-brand-fresh text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg transition-colors duration-300">
+              Transmit Intent To Procurement Desk
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-brand-charcoal text-white pt-20 pb-10 border-t border-white/5 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="md:col-span-5 space-y-6">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 border border-brand-mint/30 rounded-full flex items-center justify-center bg-white/5">
+              <span class="font-serif font-bold text-brand-mint text-xs">M</span>
+            </div>
+            <span class="font-serif text-xl font-bold tracking-widest text-white uppercase">MDJ GLOBAL</span>
+          </div>
+          <p class="text-white/40 text-xs font-light leading-relaxed max-w-sm">
+            Institutional sovereign agricultural distribution execution since 1992. Managing baseline secure infrastructure bridging critical Indian mandates directly to worldwide industrial food operations.
+          </p>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-[11px] font-bold uppercase tracking-widest text-brand-mint">Corporate Segments</h4>
+          <ul class="space-y-2 text-xs text-white/60 font-light">
+            <li><a href="#about" class="hover:text-white transition-colors">About Legacy Parameters</a></li>
+            <li><a href="#products" class="hover:text-white transition-colors">Product Specifications Portfolio</a></li>
+            <li><a href="#logistics" class="hover:text-white transition-colors">Port Logistics Configuration</a></li>
+            <li><a href="#packaging" class="hover:text-white transition-colors">Custom Private Label Enclosures</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="text-[11px] font-bold uppercase tracking-widest text-brand-mint">Institutional Newsletter Subscription</h4>
+          <p class="text-white/40 text-xs font-light">Quarterly distribution updates detailing Indian harvest volumes, regulatory changes, and pricing indexes.</p>
+          <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 max-w-sm">
+            <input type="email" class="bg-transparent px-3 py-2 text-xs text-white focus:outline-none flex-1" placeholder="desk@tradinghouse.com" />
+            <button class="bg-brand-fresh text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-brand-mint hover:text-brand-deep transition-all" onclick="alert('Subscription verified.');">Join</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center">
+        <p class="text-white/30 text-[11px] tracking-wide">&copy; 1992 - 2026 Madanlal Dharamchand Jain (MDJ). All Corporate Rights Reserved Globally.</p>
+        <p class="text-white/30 text-[10px] tracking-widest uppercase font-medium">IEC · APEDA · FSSAI · ISO Certified Proprietorship Hub</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // System Initialization Entrypoint
+    document.addEventListener("DOMContentLoaded", () => {
+      // Dynamic rendering initialization for icons
+      lucide.createIcons();
+
+      // Clear structural preloader via GSAP orchestrations
+      const tl = gsap.timeline();
+      tl.to("#loader-bar", { width: "100%", duration: 1.2, ease: "power2.inOut" })
+        .to("#loader-logo", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.8")
+        .to("#preloader", { opacity: 0, display: "none", duration: 0.6, ease: "power2.out" })
+        .from(".hero-fade", { opacity: 0, y: 30, stagger: 0.15, duration: 1, ease: "power4.out" }, "-=0.2");
+
+      // Progressive layout scroll velocity monitoring engine
+      window.addEventListener("scroll", () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scroll-progress").style.width = scrolled + "%";
+
+        // Navigation visibility scroll processing logic
+        const nav = document.getElementById("global-nav");
+        if (window.scrollY > 50) {
+          nav.classList.remove("py-3");
+          nav.classList.add("py-1.5", "shadow-emerald-950/20");
+        } else {
+          nav.classList.remove("py-1.5", "shadow-emerald-950/20");
+          nav.classList.add("py-3");
+        }
+      });
+
+      // Mobile Menu Overlay Display Actions Toggle Mechanics
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let isMenuOpen = false;
+
+      menuBtn.addEventListener("click", () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          mobileMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+          mobileMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+        } else {
+          mobileMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+          mobileMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
+        }
+      });
+
+      // Close navigation automatically upon executing click on anchor links
+      document.querySelectorAll(".mobile-link").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
+          isMenuOpen = false;
+        });
+      });
+
+      // Subtle Dynamic Ambient Float Generation for Hero Matrix
+      const container = document.getElementById("hero-particles");
+      if (container) {
+        for (let i = 0; i < 24; i++) {
+          const particle = document.createElement("div");
+          particle.className = "absolute rounded-full bg-brand-mint/20 pointer-events-none";
+          const size = Math.random() * 4 + 2;
+          particle.style.width = size + "px";
+          particle.style.height = size + "px";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          container.appendChild(particle);
+
+          gsap.to(particle, {
+            y: -(Math.random() * 120 + 40),
+            opacity: 0,
+            duration: Math.random() * 4 + 3,
+            repeat: -1,
+            ease: "none",
+            delay: Math.random() * 5
+          });
+        }
+      }
+
+      // Continuous Counter Statistics Animation Setup
+      gsap.from("#counter-years", {
+        textContent: 0,
+        duration: 2.5,
+        ease: "power2.out",
+        snap: { textContent: 1 },
+        scrollTrigger: { trigger: "#counter-years", start: "top 90%" }
+      });
+      gsap.from("#counter-countries", {
+        textContent: 0,
+        duration: 2.5,
+        ease: "power2.out",
+        snap: { textContent: 1 },
+        scrollTrigger: { trigger: "#counter-countries", start: "top 90%" }
+      });
+
+      // Structural layout component scroll transitions layout configuration
+      gsap.registerPlugin(ScrollTrigger);
+      document.querySelectorAll(".structure-anim").forEach(section => {
+        gsap.from(section, {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        });
+      });
+    });
+
+    // Filtering layout strategy methodology logic for presentation cards
+    function filterProducts(category, element) {
+      // Toggle operational state on active menu button elements
+      const buttons = element.parentElement.querySelectorAll('button');
+      buttons.forEach(btn => btn.classList.remove('product-active', 'text-white'));
+      buttons.forEach(btn => btn.classList.add('text-white/60'));
+      
+      element.classList.add('product-active');
+      element.classList.remove('text-white/60');
+
+      const cards = document.querySelectorAll('.product-card');
+      
+      gsap.to(cards, {
+        opacity: 0,
+        scale: 0.95,
+        y: 10,
+        duration: 0.2,
+        stagger: 0.05,
+        onComplete: () => {
+          cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              card.style.display = 'flex';
+              gsap.to(card, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out" });
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
